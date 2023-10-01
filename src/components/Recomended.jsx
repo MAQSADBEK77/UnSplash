@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
 function Recomended({ value, title = true }) {
-  const { data, isPending, isError } = useFetch(value);
+  const { data, isPending } = useFetch(value);
   return (
     <div className=" flex flex-col gap-7 mt-10">
       {!isPending && (
@@ -10,8 +10,13 @@ function Recomended({ value, title = true }) {
       {!isPending && (
         <div className="fixed z-20 top-0 left-0 right-0 bottom-0 backdrop-blur-md"></div>
       )}
+      {data && !data.results.length && (
+        <h1 className="text-primary text-center text-2xl md:text-4xl mt-7 mb-7">
+          Sorry no pictures 😔
+        </h1>
+      )}
       {title && (
-        <h1 className="text-primary text-2xl sm:text-4xl mt-7 mb-7">
+        <h1 className="text-primary text-2xl md:text-4xl mt-7 mb-7">
           Home pictures for you
         </h1>
       )}
@@ -21,13 +26,14 @@ function Recomended({ value, title = true }) {
             return (
               <div
                 key={cart.id}
-                className="flex-col gap-4 w-56 h-44 sm:w-96 sm:h-64">
+                className="flex-col gap-4 w-56 h-44 md:w-96 md:h-64 transition duration-300 hover:scale-125">
                 <img
                   className="object-cover w-full h-full"
                   src={cart.urls.full}
                 />
                 <p className="text-xl text-secondary translate-y-[-30px] ml-3">
-                  {cart.created_at}
+                  {cart.created_at.slice(0, 4)}.{cart.created_at.slice(5, 7)}.
+                  {cart.created_at.slice(8, 10)}
                 </p>
               </div>
             );

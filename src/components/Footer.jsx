@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <div className="container-css text-xl sm:text-2xl text-center fixed bottom-2 left-[50%] translate-x-[-50%] ">
+    <div className="container-css text-xl md:text-2xl text-center fixed bottom-2 left-[50%] translate-x-[-50%] ">
       All rights reserved ||{" "}
       <a
         className="link link-primary"

@@ -4,7 +4,9 @@ function Carts() {
   if (data) {
     return (
       <div className="md:flex hidden flex-col gap-7 mt-7">
-        <h1 className="text-primary text-2xl sm:text-4xl mb-7">Home pictures for you</h1>
+        <h1 className="text-primary text-2xl md:text-4xl mb-7">
+          Home pictures for you
+        </h1>
         <div className="carousel carousel-center p-12 space-x-4 bg-neutral rounded-box">
           {data.results.map((cart) => {
             return (
