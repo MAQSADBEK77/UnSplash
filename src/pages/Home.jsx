@@ -40,7 +40,6 @@ function Home() {
             className="mt-12 input input-bordered input-primary w-[350px] h-10"
           />
         </form>
-
         <Recomended value={value} title={false} />
       </div>
     );

@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
 function Recomended({ value, title = true }) {
   const { data, isPending } = useFetch(value);
+  function saveImage(cart) {
+    console.log(cart);
+  }
   return (
     <div className=" flex flex-col gap-7 mt-10">
       {!isPending && (
@@ -26,14 +29,21 @@ function Recomended({ value, title = true }) {
             return (
               <div
                 key={cart.id}
-                className="flex-col gap-4 w-56 h-44 md:w-96 md:h-64 transition duration-300 hover:scale-125">
+                className="flex-col gap-4 w-56 h-44 md:w-96 md:h-64 transition duration-300 hover:scale-110">
                 <img
                   className="object-cover w-full h-full"
                   src={cart.urls.full}
                 />
-                <p className="text-xl text-secondary translate-y-[-30px] ml-3">
-                  {cart.created_at.slice(0, 4)}.{cart.created_at.slice(5, 7)}.
-                  {cart.created_at.slice(8, 10)}
+                <p className="flex justify-between text-xl text-secondary translate-y-[-30px] ml-3">
+                  <span>
+                    {cart.created_at.slice(0, 4)}.{cart.created_at.slice(5, 7)}.
+                    {cart.created_at.slice(8, 10)}
+                  </span>
+                  <span
+                    className="-translate-x-4"
+                    onClick={() => saveImage(cart)}>
+                    ❤️ {cart.likes}
+                  </span>
                 </p>
               </div>
             );
